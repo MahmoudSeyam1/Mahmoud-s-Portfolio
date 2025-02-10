@@ -2,20 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .heroButton {
+    @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all duration-500 ease-in-out;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  .heroButton:hover {
+    @apply border-[#eb5e28]/40 text-[#eb5e28]/40;
+  }
+  .contactInput{
+    @apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[#242424] text-gray-500 
+    placeholder-gray-500 transition-all focus:border-[#eb5e28]/40 focus:text-[#eb5e28] hover:border-[#eb5e28]/40
+  }
 }
