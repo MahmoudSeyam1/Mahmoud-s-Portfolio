@@ -1,28 +1,32 @@
-// tailwind.config.js
-module.exports = {
+// tailwind.config.ts
+import type { Config } from 'tailwindcss';
+
+const config: Config = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",        // Scan all files in src directory
-    "./pages/**/*.{js,ts,jsx,tsx}",      // Include Next.js pages
-    "./components/**/*.{js,ts,jsx,tsx}", // Explicit components path
-    "./public/**/*.html"                  // For any HTML files in public
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
       colors: {
-        // Add your custom color palette
-        'portfolio-blue': '#2563eb',     // Your blue-600 equivalent
-        'portfolio-dark': '#1f2937',     // Your gray-800 equivalent
-        'portfolio-bg': '#111827'        // Your gray-900 equivalent
+        'portfolio-blue': '#2563eb',
+        'portfolio-dark': '#1f2937',
+        'portfolio-bg': '#111827'
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],   // Default font stack
-        mono: ['Fira Code', 'monospace'] // Code snippets font
+        sans: ['Inter', 'sans-serif'],
+        mono: ['Fira Code', 'monospace']
       }
     },
   },
   plugins: [
-    require('@tailwindcss/typography')   // Optional: prose styling
+    require('tailwind-scrollbar'), // Scrollbar plugin
+    require('@tailwindcss/forms'), // Forms plugin
+    require('@tailwindcss/typography')
   ],
-  // For dark mode class-based toggling
   darkMode: 'class'
 };
+
+export default config;
