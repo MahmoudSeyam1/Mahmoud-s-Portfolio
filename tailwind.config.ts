@@ -1,18 +1,29 @@
-import type { Config } from "tailwindcss";
-
-export default {
+// tailwind.config.js
+module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx}",        // Scan all files in src directory
+    "./pages/**/*.{js,ts,jsx,tsx}",      // Include Next.js pages
+    "./components/**/*.{js,ts,jsx,tsx}", // Explicit components path
+    "./public/**/*.html"                  // For any HTML files in public
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        // Add your custom color palette
+        'portfolio-blue': '#2563eb',     // Your blue-600 equivalent
+        'portfolio-dark': '#1f2937',     // Your gray-800 equivalent
+        'portfolio-bg': '#111827'        // Your gray-900 equivalent
       },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],   // Default font stack
+        mono: ['Fira Code', 'monospace'] // Code snippets font
+      }
     },
   },
-  plugins: [require('tailwind-scrollbar')],
-} satisfies Config;
+  plugins: [
+    require('@tailwindcss/forms'),       // Optional: if using form elements
+    require('@tailwindcss/typography')   // Optional: prose styling
+  ],
+  // For dark mode class-based toggling
+  darkMode: 'class'
+};
