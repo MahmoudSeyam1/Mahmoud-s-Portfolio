@@ -54,7 +54,7 @@ type Inputs = {
             <div className='space-y-10'>
             <div className='flex items-center space-x-5 justify-center'>
                 <PhoneIcon className='text-[#eb5e28] h-7 w-7 animate-bounce' />
-                <p className='text-2xl'><span className='bg-[#eb5e28]/80 rounded-lg p-1 text-white font-semibold'>+20</span> 01017395057</p>
+                <p className='text-2xl'><span className='bg-[#eb5e28]/80 rounded-lg p-1 text-white font-semibold'>+20</span> 010-1739-5057</p>
             </div>
 
             <div className='flex items-center space-x-5 justify-center'>

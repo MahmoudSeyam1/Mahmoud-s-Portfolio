@@ -1,130 +1,144 @@
+
 import Image from 'next/image';
-import React from 'react';
 import { motion } from 'framer-motion';
-import type { StaticImageData } from 'next/image';
 
-// Import your project images
-import Project1 from '../public/project1.png';
-import Project2 from '../public/project2.png';
-import Project3 from '../public/project3.png';
-import Project4 from '../public/project4.png';
-
-type Props = {};
-
-interface Project {
-    title: string;
-    description: string;
-    image: StaticImageData;
-    technologies: string[];
-    link: string;
-}
-
-function Projects({}: Props) {
-    const projects: Project[] = [
-        {
-            title: "Netflix Clone",
-            description: "Netflix Project that has a Log In and Log Out Authentication with Google. It has a beautiful Home Screen with all the movies looking just like Netflix. I built Netflix Clone, Using React JS, Firebase, With Movie Database API.",
-            image: Project1,
-            technologies: ["React.js", "Firebase", "Database API"],
-            link: 'https://netflix-project-jg7sgm6b9-mahmoud-seyams-projects.vercel.app/'
-        },
-        {
-            title: "Amazon Clone",
-            description: "Amazon Clone Website With add product to cart with payment gateway and used local storge for store cart items",
-            image: Project2,
-            technologies: ["Next JS", "Redux Toolkit", "Stripe"],
-            link: 'https://e-commerce-platform-bgbqg4yjc-mahmoud-seyams-projects.vercel.app/'
-        },
-        {
-            title: "TO DO LIST",
-            description: "To do list project with add tasks , delete tasks, and edit tasks. It also has a filter to filter tasks by status.",
-            image: Project3,
-            technologies: ["React JS", "CSS"],
-            link: 'https://to-do-list-mauve-two-25.vercel.app/'
-        },
-        {
-            title: "X-O Game",
-            description: "I built a simple Tic Tac Toe game using Next,Tailwind CSS, and JavaScript.",
-            image: Project4,
-            technologies: ["Next JS", "Tailwind CSS"],
-            link: 'https://x-o-game-chi.vercel.app/'
-        }
-    ]; 
-
-    return (
-        <motion.div
+const Projects = () => {
+  return (
+    <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.5 }} 
-            className='relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0 mt-4'
+            transition={{ duration: 1.5 }}
+            className='flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center overflow-y-scroll scrollbar-track-gray-400/20 scrollbar-thumb-[#eb5e28]/80 scrollbar-thin'
         >
-            <h3 className='absolute top-20 uppercase tracking-[20px] text-gray-500 text-2xl'>
+             <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>
                 Projects
             </h3>
+            
+    <motion.div
+                initial={{ x: -200, opacity: 0 }}
+                transition={{ duration: 1.2 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto absolute top-36 pb-5"
+            >
+        {/* Project 1 */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow">
+          <Image
+            src="/project1.png"
+            alt="Project 1"
+            width={600}
+            height={400}
+            className="w-full h-48 object-cover rounded-t-lg"
+          />
+          <h3 className="text-2xl font-semibold mt-4 mb-2 text-blue-400">Netflix Clone</h3>
+          <p className="text-gray-300 mb-4">
+          Netflix Project that has a Log In and Log Out Authentication with Google. It has a beautiful Home Screen with all the movies looking just like Netflix. I built Netflix Clone, Using React JS, Firebase, With Movie Database API. technologies: ["React.js", "Firebase", "Database API"]
+          </p>
+          <div className="flex space-x-4">
+            <a
+              href="https://github.com/MahmoudSeyam1/netflix-project"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              View Code
+            </a>
+            <a
+              href="https://netflix-project-jg7sgm6b9-mahmoud-seyams-projects.vercel.app/"
+              className="border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors"
+            >
+              Live Demo
+            </a>
+          </div>
+        </div>
 
-            <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-50 mt-8 scrollbar-track-gray-400/20 scrollbar-thumb-[#eb5e28]/80 scrollbar-thin'>
-                {projects.map((project, i) => (
-                    <div 
-                        key={`project-${i}`}
-                        className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 min-h-screen'
-                    >
-                        <motion.div
-                            initial={{ y: -300, opacity: 0 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ 
-                                duration: 0.8,
-                                ease: "easeOut"
-                            }}
-                            viewport={{ once: true, margin: "-20% 0px" }}
-                            className="relative w-full max-w-[600px] h-[300px] cursor-pointer"
-                            onClick={() => window.open(project.link, "_blank")}
-                        >
-                            <div className="relative w-full h-full">
-                                <Image 
-                                    src={project.image} 
-                                    alt={project.title}
-                                    fill
-                                    className='rounded-lg object-cover'
-                                    placeholder='blur'
-                                />
-                                <div className="absolute inset-0 bg-black/0 hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-                                    <p className="text-center text-white opacity-0 hover:opacity-100 transition-opacity">
-                                        View Project →
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-                        
-                        <div className='space-y-10 px-0 md:px-10 max-w-3xl'>
-                            <h4 className='text-4xl font-semibold text-center'>
-                                <span className='underline decoration-[#dc2f02]/50'>
-                                    Project {i + 1} of {projects.length}:
-                                </span>{" "}
-                                {project.title}
-                            </h4>
+        {/* Project 2 */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow">
+          <Image
+            src="/project2.png"
+            alt="Project 2"
+            width={600}
+            height={400}
+            className="w-full h-48 object-cover rounded-t-lg"
+          />
+          <h3 className="text-2xl font-semibold mt-4 mb-2 text-blue-400">Amazon Clone</h3>
+          <p className="text-gray-300 mb-4">
+          Amazon Clone Website With add product to cart with payment gateway and used local storge for store cart items, technologies: ["Next JS", "Redux Toolkit", "Stripe"]
+          </p>
+          <div className="flex space-x-4">
+            <a
+              href="https://github.com/MahmoudSeyam1/E-Commerce_Platform"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              View Code
+            </a>
+            <a
+              href="https://e-commerce-platform-bgbqg4yjc-mahmoud-seyams-projects.vercel.app/"
+              className="border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors"
+            >
+              Live Demo
+            </a>
+          </div>
+        </div>
 
-                            <p className='text-lg text-center max-w-[600px]'>
-                                {project.description}
-                            </p>
+        {/* Project 3 */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow">
+          <Image
+            src="/project3.png"
+            alt="Project 3"
+            width={600}
+            height={400}
+            className="w-full h-48 object-cover rounded-t-lg"
+          />
+          <h3 className="text-2xl font-semibold mt-4 mb-2 text-blue-400">TO DO LIST</h3>
+          <p className="text-gray-300 mb-4">
+          To do list project with add tasks , delete tasks, and edit tasks. It also has a filter to filter tasks by status. technologies: ["React JS", "CSS"]
+          </p>
+          <div className="flex space-x-4">
+            <a
+              href="https://github.com/MahmoudSeyam1/to_do_list"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              View Code
+            </a>
+            <a
+              href="https://to-do-list-mauve-two-25.vercel.app/"
+              className="border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors"
+            >
+              Live Demo
+            </a>
+          </div>
+        </div>
 
-                            <div className='flex flex-wrap gap-2 justify-center'>
-                                {project.technologies.map((tech: string, index: number) => (
-                                    <span 
-                                        key={`tech-${index}`}
-                                        className='px-3 py-1 bg-gray-200 rounded-full text-sm dark:bg-gray-800'
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <div className='w-full absolute top-[30%] bg-[#eb5e28]/30 left-0 h-[450px] -skew-y-12 z-0' />
-        </motion.div>
-    )
-}
+        {/* Project 4 */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-xl hover:shadow-2xl transition-shadow">
+          <Image
+            src="/project4.png"
+            alt="Project 4"
+            width={600}
+            height={400}
+            className="w-full h-48 object-cover rounded-t-lg"
+          />
+          <h3 className="text-2xl font-semibold mt-4 mb-2 text-blue-400">X-O Game</h3>
+          <p className="text-gray-300 mb-4">
+          I built a simple Tic Tac Toe game using Next,Tailwind CSS, and JavaScript
+          </p>
+          <div className="flex space-x-4">
+            <a
+              href="https://github.com/MahmoudSeyam1/x-o-game"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              View Code
+            </a>
+            <a
+              href="https://x-o-game-chi.vercel.app/"
+              className="border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-600 hover:text-white transition-colors"
+            >
+              Live Demo
+            </a>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 export default Projects;
