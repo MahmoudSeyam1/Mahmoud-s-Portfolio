@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import type { StaticImageData } from 'next/image';
 
 // Import your project images
-import Project1 from '/project1.png';
-import Project2 from '/project2.png';
-import Project3 from '/project3.png';
-import Project4 from '/project4.png';
+import Project1 from '../public/project1.png';
+import Project2 from '../public/project2.png';
+import Project3 from '../public/project3.png';
+import Project4 from '../public/project4.png';
 
 type Props = {};
 
