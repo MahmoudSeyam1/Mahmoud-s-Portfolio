@@ -21,7 +21,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),       // Optional: if using form elements
     require('@tailwindcss/typography')   // Optional: prose styling
   ],
   // For dark mode class-based toggling
